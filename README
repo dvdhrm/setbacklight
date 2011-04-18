@@ -2,20 +2,27 @@
   This application allows to set the backlight of the Samsung N210 to a
   user-supplied brightness value. This application takes as argument a
   brightness value and sets the current brightness to that value.
-  Run the application without arguments to get usage information.
+  Run the application without arguments to get usage information. It is
+  also possible to retrieve the current brightness value.
 
   This application uses internally:
-    setpci -s 00:02.0 F4.B=ff
+    /usr/sbin/setpci -s 00:02.0 F4.B=ff
   Whereas "ff" is the brightness value to set.
   This command is not specific to the Samsung N210 netbook, but it is known
   to work there. You may use this driver with any other computer and adjust
-  the bus-address and register-address either on compile-time or run-time.
+  the binary-path, bus-address and register-address on compile time.
 
 = Install =
   compilation: make
   clean: make clean
   install: make install (this installs with SETUID bit into /usr/bin)
   uninstall: make uninstall (this removes /usr/bin/setbacklight)
+
+= Security Considerations =
+  When installed with SETUID bit as root, this program, when invoked, passes
+  control to /usr/sbin/setpci with root-rights so you should go sure that
+  the binary located there cannot be modified by possible attackers and must
+  be the GNU setpci utility.
 
 = License =
   This program and the related documentation is dedicated to the Public Domain.
@@ -26,6 +33,6 @@
 
 = Library =
   The driver.h and driver.c files implement a clean driver API for the brightness
-  regulation. You may use these files to access the usblamps in your own application.
+  regulation. You may use these files to access the backlight in your own application.
   However, it is recommended to compile the main.c application and use the command line
   interface to access the backlight.
