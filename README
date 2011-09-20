@@ -1,3 +1,14 @@
+= Outdated =
+
+There is an in-kernel driver named "samsung-laptop" that supports proper
+samsung-ABIs instead of messing with PCI-states.
+
+Please see ./drivers/platform/x86/samsung-laptop.c in current kernel tree for
+this driver.
+
+This repository is obsolete and no longer udpated nor bugfixed. It's only
+available for documentational purposes.
+
 = Samsung N210 Backlight Driver =
   This application allows to set the backlight of the Samsung N210 to a
   user-supplied brightness value. This application takes as argument a
